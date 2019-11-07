@@ -4,11 +4,18 @@ var app = express();
 var mongoose = require('mongoose');
 var cors = require('cors');
 var multer = require('multer');
+<<<<<<< HEAD
 var passwordHash = require('password-hash');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
     cb(null, './frontend/public/pictures/');
+=======
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './cart/public/pictures/');
+>>>>>>> 827994d7e9289589cbaf096965c84a0731c6ff91
   },
   filename: function(req, file, cb) {
     cb(null, file.originalname);
@@ -28,6 +35,7 @@ var itemSchema = new mongoose.Schema({
 
 var Item = mongoose.model('Item', itemSchema);
 
+<<<<<<< HEAD
 var userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: false},
   hashedPassword: {type: String, required: false},
@@ -37,6 +45,8 @@ var userSchema = new mongoose.Schema({
 
 var User = mongoose.model('User', userSchema);
 
+=======
+>>>>>>> 827994d7e9289589cbaf096965c84a0731c6ff91
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -83,6 +93,7 @@ app.delete('/items/delete/:item', function (req, res) {
   })
 })
 
+<<<<<<< HEAD
 app.get('/users', function(req, res) {
     User.find({}, function(err, userlist) {
       if (err) console.log(err)
@@ -146,5 +157,7 @@ app.post('/userinfo/:user', function(req, res) {
     })
 })
 
+=======
+>>>>>>> 827994d7e9289589cbaf096965c84a0731c6ff91
 app.listen(5000);
 console.log("Server running at http://localhost:5000");
